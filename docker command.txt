@@ -1,0 +1,53 @@
+
+--++++++++++++++++++++++++++++++
+---++++++++++++++
+---create Database container
+-- check docker is running
+docker version
+
+-- pull form docker hub
+docker pull mysql
+
+-- create container from mysql docker file
+docker run --name app-db -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=myDB mysql
+
+--check container
+docker ps
+
+--docker logs check
+docker logs #containerId
+++++++
+---create Applicaiton container
+--create Dockerfile
+-- check docker is running
+docker version
+
+-- pull form docker hub
+docker pull mysql
+
+-- create container from mysql docker file
+docker run --name app -d my-webapp:1.0
+
+--check container
+docker ps
+docker logs #containerId
+
+--after adding changes, do
+docker build -t my-webapp:1.0
+
+--remove old container
+docker rm -f app
+
+--create container with port
+docker run --name appcontainer1 -d -p 8080:8080 my-webapp:1.0
+
++++++ docker bridge network to connect multiple container
+docker network ls
+docker network create app-network
+docker network connect app-network app-db
+
+--to create container with port and network
+dockerrun --name app-container1 -d -p 8080:8080 --network=app-network my-webapp:1.0
+
+-- to create working environment from other customer docker image, do compose
+docker-compose up
