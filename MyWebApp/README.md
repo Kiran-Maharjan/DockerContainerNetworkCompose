@@ -8,5 +8,3 @@ Instructions to get the application up and running:
 2. Build the application war (Run `mvn install` or use IntelliJ IDEA to build the war file).
 3. Run `docker-compose up`. Give the application a few seconds to come up. 
 4. Access the application at http://localhost:8080/MyWebApp/
-
- [![JetBrains team project](http://jb.gg/badges/team.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
